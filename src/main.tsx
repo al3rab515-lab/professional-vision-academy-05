@@ -1,5 +1,18 @@
-import { createRoot } from 'react-dom/client'
-import App from './App.tsx'
-import './index.css'
+cat > src/main.tsx << 'EOF'
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { HashRouter, Routes, Route } from 'react-router-dom';
+import App from './App';
+import NotFound from './pages/NotFound';
 
-createRoot(document.getElementById("root")!).render(<App />);
+ReactDOM.createRoot(document.getElementById('root')!).render(
+  <React.StrictMode>
+    <HashRouter>
+      <Routes>
+        <Route path="/" element={<App />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+    </HashRouter>
+  </React.StrictMode>
+);
+EOF
